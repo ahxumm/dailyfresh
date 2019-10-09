@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from apps.user.views import RegisterView, ActiveView, LoginView
 from apps.user import views
 
 urlpatterns = [
-    url(r'^register$', views.register, name='register'),    # 注册
-    url(r'^register_handle$', views.register_handle, name='register_handle'),   # 注册处理
+    # url(r'^register$', views.register, name='register'),    # 注册
+    # url(r'^register_handle$', views.register_handle, name='register_handle'),   # 注册处理
+    url(r'^register$', RegisterView.as_view(), name='register'),    # 注册
+    url(r'^active/(?P<token>.*)$', ActiveView.as_view(), name='active'),     # 激活
+    url('^login$', LoginView.as_view(), name='login'),  # 登录
 ]

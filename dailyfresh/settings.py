@@ -89,7 +89,7 @@ DATABASES = {
         # 'PASSWORD': '123456',
         # 'HOST': '192.168.198.129',
         'PASSWORD': 'root',
-        'HOST': '222.204.60.39',
+        'HOST': 'localhost', # 222.204.60.39
         'PORT': 3306,
     }
 }
@@ -121,3 +121,15 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+# 发送邮件配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# 发送邮件服务器地址
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'ahxumm@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = '18726711717m'
+# 收件人看到的发件人
+EMAIL_FROM = '天天生鲜<ahxumm@163.com>'
