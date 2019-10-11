@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -86,8 +87,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dailyfresh',
         'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '192.168.198.129',
+        # 'PASSWORD': '123456',
+        # 'HOST': '192.168.198.129',
+        'PASSWORD': 'root',
+        'HOST': 'localhost', # 222.204.60.39
         'PORT': 3306,
     }
 }
@@ -119,3 +122,33 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+# 发送邮件配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# 发送邮件服务器地址
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'ahxumm@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = '18726711717m'
+# 收件人看到的发件人
+EMAIL_FROM = '天天生鲜<ahxumm@163.com>'
+
+# Django的缓存配置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/9",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# 配置session存储
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# 配置登录URL
+LOGIN_URL = '/user/login'
